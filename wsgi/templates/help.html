@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnsembleRNA: Help</title>
+<link href='{{ url_for('static', filename='css/bootstrap.css') }}' rel='stylesheet' type='text/css'>
+<link href='{{ url_for('static', filename='css/custom.css') }}' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800 ' rel='stylesheet' type='text/css'>
+<style>
+html {
+    min-width: 800px;
+    margin: 0 auto;
+    background: #eee; /* Fills the page */
+    position: relative; /* Fix for absolute positioning */
+}
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    color: gray;
+    background-color: transparent;
+    text-decoration: none;
+}
+</style>
+</head>
+    
+<body>
+    <div style="text-align:right;margin-right:20px"><font size="4">
+        <br>
+        <a href="{{ url_for('homepage') }}">Overview</a>&emsp;&emsp;
+        <a href="{{ url_for('download') }}">Download</a>&emsp;&emsp;
+        <a href="{{ url_for('inputs') }}">Create Visualization</a>&emsp;&emsp;
+        <a href="{{ url_for('example') }}">Example</a>&emsp;&emsp;
+        <b><font color="gray">Help</b></font>
+        <br><br>
+    </font></div>
+    <section style="background-color:#e6e6e6;">
+        <div class="container">
+            <br><br>
+            <br><br>
+        </div>
+    </section>
+    
+    <div class="container">
+        <h2 class="text-left">Methodology</h2>
+        <p class="lead" style="line-height:85%;"><font size=3><br>
+            For information on the methodology for EnsembleRNA, see the accompanying publication.<br>
+           <a style="color: blue;background-color: transparent;text-decoration: underline;" href="">PAPER</a>
+        </font></p>
+    </div><br><br>
+    
+    <div class="container">
+        <h2 class="text-left">File Formats</h2>
+        <p class="lead" style="line-height:85%;"><font size=3><br>
+            1) <a style="color: blue;background-color: transparent;text-decoration: underline;" href="https://en.wikipedia.org/wiki/FASTA_format">FASTA</a> format <br>
+            For FASTA, the first line is the title and needs to start with ">". Subsequent lines should only contain sequence (whitespace is ignored). Lowercase nucleotides will be forced single stranded in structure prediction. The fasta file should contain a single sequence. The accepted file extension is <i>.fa</i>.<br><br>
+            &emsp;&emsp;>sequence title<br>
+            &emsp;&emsp;AAAGCUAAGCAUGAAAA<br><br>
+            2) <a style="color: blue;background-color: transparent;text-decoration: underline;" href="http://rna.urmc.rochester.edu/Text/File_Formats.html#SHAPE">SHAPE</a> format <br>
+            For SHAPE, the file is organized in two columns. The first column is the nucleotide number, and the second is the reactivity. Nucleotides for which there is no SHAPE data can either be left out of the file, or the reactivity can be entered as -999. Columns are separated by any white space. There is no header. The SHAPE file should contain a single trace. The accepted file extension is <i>.shape</i>.<br><br>
+            &emsp;&emsp; 9&emsp;&emsp;-999<br>
+            &emsp;&emsp;10&emsp;&emsp;-999<br>
+            &emsp;&emsp;11&emsp;&emsp;0.042816<br>
+            &emsp;&emsp;12&emsp;&emsp;0<br>
+            &emsp;&emsp;13&emsp;&emsp;0.15027<br>
+            &emsp;&emsp;14&emsp;&emsp;0.16201<br><br>
+            3) <a style="color: blue;background-color: transparent;text-decoration: underline;" href="http://eternagame.wikia.com/wiki/Dot-Bracket_Notation">Dot-Bracket</a> format <br>
+            For dot-bracket, each line contains a structure in dot-bracket notation. There should be no headers or sequence information and the file should contain an ensemble of structures. The accepted file extension is <i>.db</i><br><br>
+            &emsp;&emsp;((((...))))...((((...))))<br>
+            &emsp;&emsp;((((...((((...))))...))))<br>
+            &emsp;&emsp;((((...((((......))))))))<br>
+        </font></p>
+    </div><br><br>
+    
+    <div class="container">
+        <h2 class="text-left">Inputs</h2>
+        <p class="lead" style="line-height:85%;"><font size=3><br>
+            <b>Required Inputs</b><br>
+            1) FASTA file
+            <br>RNA sequence of interest for visualization. Fasta file format is required. This file is required for a new visualization. Note: At this time the EnsembleRNA Webserver is limited to sequences shorter than 400 nts. For longer RNAs, please download the EnsembleRNA Python Package.<br><br>
+            <b>Optional Inputs</b><br>
+            1) Email Address
+            <br>Email address to receive link to results. If an email address is not supplied, leaving the loading page will result in your visualization not being saved. Recommended option for longer RNAs.<br><br>
+            2) SHAPE file
+            <br>SHAPE trace for the RNA sequence of interest. SHAPE file format is required. If Dot-Bracket file is included, this file will be ignored. <br><br>
+            3) Dot-Bracket file
+            <br>Set of dot-bracket structures for the RNA sequence of interest. Dot-bracket file format is required. This file is optional.<br><br>
+            4) map FASTA file
+            <br>reference RNA sequence for creating a map of conformational space for all other projections. This file should be the same for all sequences that you wish to compare. If a map FASTA file is not included, the RNA sequence FASTA file will be used. This sequence may not actually be used in the final map of conformational space, but ensures a consistent space for projection FASTA file format is required.<br><br>
+            5) map Dot-Bracket file
+            <br>Set of dot-bracket structures for the RNA sequence of interest. Dot-bracket file format is required. This file should be the same for all sequences that you wish to compare.<br><br>
+            <b>Advanced Inputs</b><br>
+            All advanced options are optional.<br><br>
+            1) map Size
+            <br>Number of sequences to be used in the map of conformational space. (Default is 10). <br><br>
+            2) Range
+            <br>Range of nucleotides to visualize. Predicted structures will include the full length of the input RNA but only the given range will be plotted. (Default is 1 to sequence length).<br><br>
+            3) Maximum Distance
+            <br>The maximum number of bases between the two nucleotides in a pair. (Default is no restriction).<br><br>
+            <b>Package Only Inputs</b><br>
+            Only available for python package available by download<br><br>
+            1) Output directory
+            <br>Directory for output files. The directory must already exist. (Required input).<br><br>
+            2) Temperature
+            <br>Temperature at which the calculation takes place in Kelvin. (Default is 310.15 K).<br><br>
+            3) SHAPE Intercept
+            <br>The intercept used with SHAPE restraints. Ignored if reference dot-bracket file is included. (Default is -0.6 kcal/mol).<br><br>
+            4) SHAPE slope
+            <br>The slope used with SHAPE restraints. Ignored if reference dot-bracket file is included. (Default is 1.8 kcal/mol).<br><br>
+            5) Plot Map
+            <br>Plot the map. Choices are 'T' or 'F', and single quotes must be included. (Default is 'T').<br><br>
+            6) Plot Interactive
+            <br>Plot the interactive html file. Choices are 'T' or 'F', and single quotes must be included. (Default is 'T').<br><br>
+            7) Maximum Threads
+            <br>Maximum number of threads for multi-threading. (Default is 1).<br><br>
+        </font></p>
+    </div><br><br>
+    
+    <div class="container">
+        <h2 class="text-left">Output</h2>
+        <p class="lead" style="line-height:85%;"><font size=3><br>
+            <b>Interactive Ouput</b><br>
+            For more information, see the "Example" page<br><br>
+            1) Reference Visualization
+            <br>Plot for the reference ensemble. Bubble size varies by the number of structures in that cluster. Similar clusters are closer together in space.<br><br>
+            2) Mediod Structure
+            <br>The arc diagram representation of the structure closest to all other structures in the cluster. Veertical gray lines indicate the selected range.<br><br>
+            1) Cluster Diversity
+            <br>Representation of cluster diversity. Clusters with many different unique structures are considered high diversity and clusters with few unique structures are low diversity. The cluster diversity is normalized to the cluster size.<br><br>
+            <b>Output Files</b><br>
+            For both reference and map of conformational space<br><br>
+            1) CSV file
+            <br>.csv file with cluster number, xy-coordinates, cluster size, mediod structure and vector representation.<br><br>
+            2) DB file
+            <br>.db Dot-Bracket file with structures.<br><br>
+            3) PDF file
+            <br>.pdf file with visualization plot.<br><br>
+            4) PNG file
+            <br>.png file with visualization plot.<br><br>
+            5) HTML file
+            <br>.html file with interactive plotting. (Reference ensemble only).<br><br>
+            
+        </font></p>
+    </div><br><br>
+    <div class="container">
+        <h2 class="text-left">Contact</h2>
+        <p class="lead" style="line-height:85%;"><font size=3><br>
+            Send an email to <a style="color: blue;background-color: transparent;text-decoration: underline;" href="mailto:laederachlab@gmail.com">Laederach Lab</a>. We welcome any questions, comments or suggestions. If you have any publications using EnsembleRNA, we would be interested in seeing how the package is being used.
+        </font></p>
+    </div><br><br>
+    <div class="container">
+        <h2 class="text-left">References</h2>
+        <p class="lead" style="line-height:85%;"><font size=3>
+            Suboptimally sampled structures are generated using the <a style="color: blue;background-color: transparent;text-decoration: underline;" href="http://rna.urmc.rochester.edu/RNAstructureWeb/">RNAstructure package</a> (Version 5.8)<sup>2,3,4,5</sup><br><br>
+            1) D.H. Mathews.
+            "Using an RNA Secondary Structure Partition Function to Determine Confidence in Base Pairs Predicted by Free Energy Minimization."
+            RNA, 10:1178-1190. (2004).<br><br>
+            2) S. Dian, et al.
+            "Interpreting Oligonucleotide Microarray Data to Determine RNA Secondary Structure. Application to the 3' End of Bombyx mori R2 DNA."
+            Biochemistry, 45:9819-9832. (2006).<br><br>
+            3) D.H. Mathews.
+            "Revolutions in RNA Secondary Structure Prediction."
+            Journal of Molecular Biology, 359:526-532. (2006).<br><br>
+            4) S. Wuchty, et al.
+            "Complete Suboptimal Folding of RNA and the Stability of Secondary Structures."
+            Biopolymers, 49:145-165. (1999).<br><br>
+            5)  Y. Ding and C.E. Lawrence.
+            "A Statistical Sampling Algorithm for RNA Secondary Structure Prediction."
+            Nucleic Acids Research, 31:7280-7301. (2003).<br><br>
+            6) E.J. Merino, et. al. "RNA structure analysis at single nucleotide resolution by selective 2‐hydroxyl acylation and primer extension (shape)." J Am Chem Soc, 127:4223-4231. (2005).<br><br>
+            7) K.E. Deigan, et al. Accurate SHAPE-directed RNA Structure Determination."
+            Proceedings of the National Academy of Sciences USA, 106:97-102. (2009).<br><br>
+            8) Pearson, K. "On Lines and Planes of Closest Fit to Systems of Points in Space." Philosophical Magazine, 11:559–572. (1901).<br><br>
+            9) D.B. Carr, et al. "Scatterplot Matrix Techniques for large N." Journal of the American Statistical Association, 389:424-436. (1987).<br><br>
+            10) J. Ritz, et al. "Evaluating our ability to predict the structural disruption of RNA by SNPs." BMC Genomics, 13(Suppl 4):S6. (2012).<br><br>
+            <br><br>
+            Last webserver update: August 2016
+        </font></p>
+    </div><br><br>
+    <hr>
+    <div class="text-right" style="margin-right:20px;margin-bottom:20px">
+        EnsembleVis created by Chanin Tolson<br>
+        Leaderach Lab - UNC Chapel Hill<br><br>
+    </div>
+</body>

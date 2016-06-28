@@ -1,0 +1,14 @@
+Flask
+validate_email
+werkzeug
+WTForms
+flask_util_js
+pymongo==3.2.2
+jinja2
+ipython
+numpy
+matplotlib
+mpld3
+scipy
+sklearn
+celery
