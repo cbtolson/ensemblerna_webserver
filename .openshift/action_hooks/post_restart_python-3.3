@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#start celery worker
+cd /var/lib/openshift/5772b3ac0c1e66ef230001e7/app-root/repo/wsgi/
+celery -A rnavis.tasks worker --detach
+
+
