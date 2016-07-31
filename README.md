@@ -8,7 +8,6 @@ Summary: Interactive visualization for RNA structural ensembles (Python package 
 - Stores and retrieves image data using MongoDB
 - Built/deployed webserver with flask, python, HTML5, Javascript, D3.js
 - Developed concurrency modules for long processes using Celery, and CloudAMQP
-- Developed stand-alone application in python for longer RNA sequences
 
 For more information:
 http://ribosnitch-ensemblerna.rhcloud.com
