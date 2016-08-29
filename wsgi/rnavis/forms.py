@@ -1,3 +1,6 @@
+##########################################################################################################
+#Class for forms used on input page
+##########################################################################################################
 from wtforms import Form, FileField, StringField, IntegerField, BooleanField
 from wtforms.validators import DataRequired
 
