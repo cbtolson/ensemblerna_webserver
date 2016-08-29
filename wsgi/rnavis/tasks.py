@@ -79,7 +79,7 @@ def runEnsembleRNA(task_id, ref_fasta, ref_shape, ref_db, map_fasta, map_db, rgs
                 server.sendmail(FROM, TO, message)
                 server.close()
             except:
-                return "ERROR: Could not send email. Visualization is accessible at\n\nhttp://127.0.0.1:5000/output/"
+                return "ERROR: Could not send email. Visualization is accessible at\n\nhttp://ribosnitch-ensemblerna.rhcloud.com/output/"+str(task_id)
 
         return(output)
     else:
@@ -115,7 +115,7 @@ def runEnsembleRNA(task_id, ref_fasta, ref_shape, ref_db, map_fasta, map_db, rgs
         if email is not None and email != '' and email != 'None':
                 
             #email message
-            TEXT = "\n\nYour visualization is ready. To view your output follow the link below. Thank you for using EnsembleRNA. (Please do not reply to this email)\n\n"+"http://ensemblerna-cbtolson.rhcloud.com/output/"+str(task_id)+"\n\n\n\n"
+            TEXT = "\n\nYour visualization is ready. To view your output follow the link below. Thank you for using EnsembleRNA. (Please do not reply to this email)\n\n"+"http://ribosnitch-ensemblerna.rhcloud.com/output/"+str(task_id)+"\n\n\n\n"
     
             #send email
             gmail_user = "ensemblerna@gmail.com"
@@ -132,6 +132,6 @@ def runEnsembleRNA(task_id, ref_fasta, ref_shape, ref_db, map_fasta, map_db, rgs
                 server.sendmail(FROM, TO, message)
                 server.close()
             except:
-                return "Could not send email. Visualization is accessible at\n\nhttp://http://ensemblerna-cbtolson.rhcloud.com/output/"+str(task_id)
+                return "Could not send email. Visualization is accessible at\n\nhttp://ribosnitch-ensemblerna.rhcloud.com/output/"+str(task_id)
 
         return(True)
