@@ -12,3 +12,4 @@ mpld3
 scipy
 sklearn
 celery
+sqlalchemy
