@@ -85,12 +85,12 @@ def runEnsembleRNA(task_id, ref_fasta, ref_shape, ref_db, map_fasta, map_db, rgs
     else:
         #clean temporary folder
         if map_file is not None or map_dbfile is not None:
-            cmd = 'rm -f'+TEMP_FOLDER+str(task_id)+'/map_* '
+            cmd = 'rm -f '+TEMP_FOLDER+str(task_id)+'/map_* '
             subprocess.check_output(cmd, shell=True)
         if shape_file is not None or db_file is not None:
-            cmd = 'rm -f'+TEMP_FOLDER+str(task_id)+'/ref_* '
+            cmd = 'rm -f '+TEMP_FOLDER+str(task_id)+'/ref_* '
             subprocess.check_output(cmd, shell=True)
-        cmd = 'rm -f'+TEMP_FOLDER+str(task_id)+'/*fa '
+        cmd = 'rm -f '+TEMP_FOLDER+str(task_id)+'/*fa '
         subprocess.check_output(cmd, shell=True)
 
         #zip folder
@@ -108,7 +108,7 @@ def runEnsembleRNA(task_id, ref_fasta, ref_shape, ref_db, map_fasta, map_db, rgs
         client.close()
 
         #delete temporary and upload files
-        cmd = 'rm -r -f' + os.path.join(TEMP_FOLDER, task_id+'*')
+        cmd = 'rm -r -f ' + os.path.join(TEMP_FOLDER, task_id+'*')
         subprocess.check_output(cmd, shell=True)
 
         #email output
