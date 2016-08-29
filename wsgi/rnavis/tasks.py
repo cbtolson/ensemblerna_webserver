@@ -13,7 +13,7 @@ from celery.result import AsyncResult
 from rnavis.erna.ensemble import ensembleRNA
 
 #create celery app
-capp = Celery('tasks', backend='amqp', broker=os.getenv('CLOUDAMQP_URI'), include=['rnavis.tasks'])
+capp = Celery('tasks', backend='db+'+os.environ['OPENSHIFT_POSTGRESQL_DB_URL'], broker='sqla+'+os.environ['OPENSHIFT_POSTGRESQL_DB_URL'], include=['rnavis.tasks'])
 
 #celery task
 @capp.task(trail=True)
