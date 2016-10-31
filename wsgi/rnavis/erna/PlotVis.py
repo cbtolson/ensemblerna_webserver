@@ -101,7 +101,7 @@ def plotRef(reffreq, refnest, refarr, mappos, mapnest, mapseqs, mapdb, maparr, m
                 dst = distance.euclidean(np.array(r),np.array(m))
                 if(maxdst>dst):
                     mn = j
-                    maxdist = dst
+                    maxdst = dst
             freq[mn] = freq[mn]+reffreq[i]
 
     #plot attributes
